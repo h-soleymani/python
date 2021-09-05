@@ -1,6 +1,9 @@
 from functions import list_to_excel, search,send_email
 import pandas as pd
 
+file = open("html.txt",'r',encoding="utf-8")
+myhtml = file.read()
+file.close()
 my_data = pd.read_excel('data1.xlsx')
 profile_df = pd.read_excel('profile.xlsx')
 my_list = my_data.values.tolist()
@@ -23,4 +26,4 @@ for item in unique_type:
             temp.append(row)
 
     list_to_excel(temp,headers,item)
-    send_email(item,search(profile_list,item),'')
+    send_email(item,search(profile_list,item),'',myhtml)
