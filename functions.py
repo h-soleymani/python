@@ -18,13 +18,14 @@ def list_to_excel(list_name,headers, file_name):
 
 
 
-def send_email (name, recipient, cc):
+def send_email (name, recipient, cc,html):
     outlook = win32com.client.Dispatch('outlook.application')
+    myhtml = open("html.txt",'r')
     mail = outlook.CreateItem(0)
     mail.To = recipient
     mail.bcc = 'h.soleymani@asiatech.ir'
     mail.Subject = name
-    mail.HTMLBody = '<h3>This is HTML Body</h3>'
+    mail.HTMLBody = html
     # mail.Attachments.Add('export/' + name + '.xlsx')
     mail.Attachments.Add('C:/Users/h.soleymani/Desktop/projects/split excel and send email/export/' + name + '.xlsx')
     mail.CC = cc
